@@ -6,6 +6,9 @@ def checkInput():
         human = input("Rock Scissors Paper! : ")
         try:  # check that input can be convert to int type
             ihuman = int(human)
+            if ihuman >= 3:
+                print("You should insert 0(rock), 1(scissors), 2(paper) only. Try again")
+                continue
         except:  # if input can not be convert to int type, convert the input manually.
             if (human == "rock"):
                 ihuman = 0
@@ -22,15 +25,11 @@ def checkInput():
 # play the game
 def doGame(human):
     computer = random.randint(0, 2)
-    if (human >= 3):  # validity check
-        print("Invalid Input!! Please check it (0~2)")
-        doGame(checkInput())
-    elif (human == computer):  # case : draw
+    if (human == computer):  # case : draw
         printStatus(human, computer)  # print the status
-        print('Round',i,': Draw!')
+        print('Round',i,'result: Draw!')
         result = 'draw'
         return result
-
     # Calculate the levicivita since the game is based on the permutation
     # Rock(0) -> Scissors(1) -> Papaer(2) -> Rock(0) ->....
     levicivita = lambda i, j, k: (i - j) * (j - k) * (k - i) / 2
@@ -41,13 +40,13 @@ def doGame(human):
 
     if (levi == 1):  # case : win
         printStatus(human, computer)  # print the status
-        print('Round',i,': You win!')
+        print('Round',i,'result: You win!')
         result = 'win'
         return result
 
     elif (levi == -1):  # case : loose
         printStatus(human, computer)  # print the status
-        print('Round',i,': You lose!')
+        print('Round',i,'result: You lose!')
         result = 'lose'
         return result
 
@@ -84,18 +83,20 @@ if games == 0:
     print("Oh, you don't want to play game? Ok, bye")
     quit()
 #execute the games
+w=0
+d=0
+l=0
 for i in range(1,games+1):
-    w=0
-    d=0
-    l=0
-    print('Round',i, '!')
+
+    print('-----Round',i, '!-----')
     score = doGame(checkInput())
     if score == 'draw':
-        d = d+1
+        d = d + 1
     elif score == 'win':
-        w = w+1
-    elif score == 'lose':
-        l = l+1
-# total score after game  
+        w = w + 1
+    else:
+        l = l + 1
+# total score after game ends
+print("-----------------------------Total score----------------------------")
 print('My record:',w,'win',d,'draw',l,'lose')
-print("Com's record:",games-d-l,'win',d,'draw',w,'lose')
+print("Com's record:",games-d-w,'win',d,'draw',w,'lose')
