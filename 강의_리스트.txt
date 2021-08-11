@@ -1,0 +1,79 @@
+제 8장 파이썬 리스트
+1. 프로그래밍
+  가. 알고리즘: 문제를 해결하는 데 사용하는 일련의 규칙 또는 단계
+  나. 자료 구조: 컴퓨터에서 자료를 구성하는 특별한 방법
+
+2. "컬렉션"이 아닌 것은?
+  가. 대부분의 변수는 한 값만을 갖음
+  나. 변수에 새 값을 대입하면, 이전 값에 덮어씌워 짐.
+
+3. 리스트는 컬렉션의 일종
+  가. 컬렉션은 하나의 '변수'에 많은 값을 넣을 수 있음
+  나. 컬렉션을 쓰면 많은 변수를 전부 하나의 편리한 꾸러미에 넣어다닐 수 있어서 유용
+  다. 예시
+    - friends = [ 'Joseph', 'Glenn', 'Sally']
+
+4. 리스트 상수
+  가. 리스트 상수는 대괄호로 둘러싸여 있고 리스트의 원소는 반점으로 구분됨
+  나. 리스트는 파이썬의 어떤 객체도 원소로 넣을 수 있음
+  다. 심지어 다른 리스트를 넣는 것도가능
+  라. 빈 리스트도 생성 가능
+
+5. 리스트의 내부
+  가. 문자열과 마찬가지로, 대괄호를 이용한 인덱스로 리스트의 원소 하나하나를 가져올 수 있음
+  나. 예시문
+    >>> friends = [ 'Joseph', 'Glenn', 'Sally' ]
+    >>> print(friends[1])
+    Glenn
+
+6. 리스트는 변경 가능
+  가. 문자열은 “변경 불가”
+    (1) 문자열의 내용을 변경할 수 없음
+    (2) 변경하려면 새 문자열을 만들어야 함
+    (3) 예시문
+      >>> fruit = 'Banana'
+      >>> fruit[0] = 'b'
+      Traceback
+      TypeError: 'str' object does not
+      support item assignment
+  나. 리스트는 “변경 가능”
+    (1) 인덱스 연산자를 사용하여 리스트의 요소를 변경 가능
+    (2) 예시문
+      >>> x = fruit.lower()
+      >>> print(x)
+      banana
+      >>> lotto = [2, 14, 26, 41, 63]
+      >>> print(lotto)
+      [2, 14, 26, 41, 63]
+      >>> lotto[2] = 28
+      >>> print(lotto)
+      [2, 14, 28, 41, 63]
+
+7. 리스트의 길이는?
+  가. lne() 함수는 리스트를 매개 변수로 받고 리스트의 원소 개수를 반환함
+  나. 예시문
+    >>> x = [1,2,'joe',99]
+    >>> print(len(x))
+    4
+  다. 사실 len() 함수는 아무 집합이나 시퀀스(예: 문자열)를 받아 원소의 개수를 반환함
+
+8. range 함수 사용하기
+  가. range 함수는 0부터 매개 변수로 넣은 값보다 1작은 범위의 수까지로 구성된 숫자 리스트를 반환
+  나. for 문과 정수 반복자를 통해 인덱스 루프를 구성 가능
+  다. 예시문
+    >>> print(range(4))
+    [0,1,2,3]
+    >>> friends = ['Joseph', 'Glenn', 'Sally']
+    >>> print(len(friends))
+    3
+    >>> print(range(len(friends)))
+    [0,1,2]
+  라. 두 가지 루프 이야기: 아래 for 루프 모두 같은 결과
+    friends = ['Joseph', 'Glenn', 'Sally']
+
+    for friend in friends :
+      print('Happy New Year:', friend)
+
+    for i in range(len(friends)) :
+      friend = friends[i]
+      print('Happy New Year:', friend)
