@@ -1,4 +1,4 @@
-# Define function
+# Define function1
 def Inputchecker(names):
     names = names.strip()
     # check whether numbers of king's names is too small
@@ -13,6 +13,7 @@ def Inputchecker(names):
         Inputchecker(re)
     return names
 
+# Define function2
 def OverlappedKingFinder(korea,chosun):
     # make king name list of korea and chosun each.
     ko_kings_lst = korea.split(",")
