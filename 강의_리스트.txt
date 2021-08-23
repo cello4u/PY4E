@@ -1,3 +1,964 @@
+제 2장 변수, 표현식 및 코드
+1. 연산자, 데이터 타입 및 타입 변환
+    가. 연산 순위 규칙
+        (1) 괄호>거듭제곱(**)>곱셈, 나눗셈, 나머지(*,/,%)>덧셈, 뺄셈(+,-)>왼쪽에서 오른쪽
+        (2) 예시) 
+            >>> x = 1 + 2 ** 3 / 4 * 5
+            >>> print(x)
+            11.0
+            >>>
+    나. 자료형(TYPE) 
+        (1) 종류: 변수, 문자, 상수
+        (2) 상수 뿐만아니라 문자로 '+'로 연결가능
+        (3) 예시
+            >>> ddd = 1 + 4
+            >>> print(ddd)
+            5
+            >>> eee = 'hello ' + 'there'
+            >>> print(eee)
+            hello there
+        (4) type() 함수를 통해 자료형을 알수 있음.
+        (5) 숫자는 int(정수), float(부동 소수점) 두 자료형으로 존재
+        (6) 자료형 변환
+            (가) 표현식에 정수와 부동 소수점 수가 있으면 암묵적으로 정수를 부동 소수점으로 변환됨
+            (나) 내장된 함수 int() 와 float() 으로 자료형을 변환을 할 수 있음
+            (다)예시
+                >>> print(float(99) + 100)
+                199.0
+                >>> i = 42
+                >>> type(i)
+                <class'int'>
+                >>> f = float(i)
+                >>> print(f)
+                42.0
+                >>> type(f)
+                <class'float'>
+        (7) 정수의 나눗셈
+            (가) 3.0 버전 이후로 정수 나눗셈은 부동 소수점 수를 반환
+            (나) 3.0 미만 버전에서는 나눗셈의 결과는 내림 처리한 정수였음. 예시 print(9 / 2) >>> 4
+        (8) 문자열 변환
+            (가) int() 와 float() 으로 문자열과 정수를 변환
+            (나) 문자열에 숫자가 없을 경우 에러가 발생
+            (다) 예시
+                >>> sval = '123'
+                >>> type(sval)
+                <class 'str'>
+                >>> print(sval + 1)
+                Traceback (most recent call last):
+                File "<stdin>", line 1, in <module>
+                TypeError: Can't convert 'int' object
+                to str implicitly
+                >>> ival = int(sval)
+                >>> type(ival)
+                <class 'int'>
+                >>> print(ival + 1)
+                124
+                >>> nsv = 'hello bob'
+                >>> niv = int(nsv)
+                Traceback (most recent call last):
+                File "<stdin>", line 1, in <module>
+                ValueError: invalid literal for int()
+                with base 10: 'x'
+    다. 사용자 입력
+        (1) input() 함수로 멈추고 사용자의 입력값을 받을 수 있음
+        (2) input() 함수는 문자열을 반환
+        (3) 예시
+            >>> nam = input('Who are you? ')
+            >>> print('Welcome', nam)
+            (결과)
+            Who are you? Chuck
+            Welcome Chuck
+    라. 주석
+        (1) 파이썬은 # 다음 모든 내용을 무시
+        (2) 주석의 역할
+            (가) 코드가 어떤 일을 하는지 설명
+            (나) 코드를 쓴 사람 등 부가 설명   
+            (다) 임시적으로 코드를 비활성화
+
+제 3장 조건부 실행
+    1. 조건문(if else)
+        가. 예시문
+            x = 5
+            if x < 10:
+                print('Smaller')
+            if x > 20:
+                print('Bigger')
+            print('Finis')
+        나. 결과
+            Smaller
+            Finis
+    2. 비교 연산자
+        가. 부울 표현식은 네/아니오 질문을 통해 프로그램의 흐름을 결정
+        나. 부울 표현식은 비교 연산자로 참/거짓, 네 / 아니오를 판단
+        다. 비교 연산자는 변수를 바꾸지 않음
+        라. 비교 연산자 종류    
+            (1) < 작다
+            (2) <= 작거나 같다
+            (3) == 같다
+            (4) >= 크거나 같다
+            (5) > 크다
+            (6) != 같지 않다
+            “=”는 대입문에 쓰임
+    3. 한 갈래 분기
+        가. 예시문
+            x = 5
+            print('Before 5')
+            if x == 5 :
+                print('Is 5')
+                print('Is Still 5')
+                print('Third 5')
+            print('Afterwards 5')
+            print('Before 6')
+            if x == 6 :
+                print('Is 6')
+                print('Is Still 6')
+                print('Third 6')
+            print('Afterwards 6')\
+        나. 결과
+            Before 5
+            Is 5
+            Is Still 5
+            Third 5
+            Afterwards 5
+            Before 6
+            Afterwards 6
+        다. 들여쓰기
+            (1) if 문과 for 문 ( : ) 다음에 들여쓰기를 함
+            (2) 들여쓰기를 유지해서 블록의 범위를 표시 (if와 for 블록의 범위)
+            (3) if 문과 for 문에 맞춰 내어쓰기를 해서 블록의 끝을 표시
+            (4) 빈 줄은 들여쓰기에 상관없이 무시됨
+            (5) 주석은 들여쓰기에 상관없이 무시됨
+            (6) 주의사항
+            (7) Atom은 ".py" 파일의 탭을 자동으로 스페이스로 변환
+            (8) 대부분 텍스트 에디터는 탭을 스페이스로 변환한다 - 기능을 활성화
+            (9) 파이썬은 들여쓰기를 중요시하여 탭과 스페이스를 혼동하면 “들여쓰기 에러”가 발생
+        라. 중첩된 분기
+            (1) 예시문
+                x = 42
+                if x > 1 :
+                    print('More than one')
+                    if x < 100 :
+                        print('Less than 100')
+                print('All done')
+    3. 두 갈래 분기
+        가. 논리식이 참일 때와 거짓일 때 각각 다른 일을 할 수 있다
+        나. 갈림길과 같이 둘 중 하나만 선택할 수 있다
+        다. 예시문
+            x = 4
+            if x > 2 :
+                print('Bigger')
+            else :
+                print('Smaller')
+            print('All done')
+    4. 다중 분기
+        가. 예시문
+        if x < 2 :
+            print('small')
+        elif x < 10 :
+            print('Medium')
+        else :
+            print('LARGE')
+        print('All done')
+        나. else가 없는 경우: 조건에 따라 if 실행을 하나도 거치지 않을 수도 있게 됨.
+        x = 5
+        if x < 2 :
+            print('Small')
+        elif x < 10 :
+            print('Medium')
+        print('All done')
+        다. 다중 elif
+        if x < 2 :
+            print('Small')
+        elif x < 10 :
+            print('Medium')
+        elif x < 20 :
+            print('Big')
+        elif x < 40 :
+            print('Large')
+        elif x < 100:
+            print('Huge')
+        else :
+            print('Ginormous')
+    5. try / except 구조
+        가.  위험한 코드를 try/except 을 사용해 처리
+        나. try 블록에 있는 코드가 성공하면 - except 블록을 건너뜀
+        다. try 블록에 있는 코드가 실패하면 - except 블록을 실행
+        라. 예시문
+            (1) except 블록 실행
+            astr = 'Hello Bob'
+            try:
+                istr = int(astr)
+            except:
+                istr = -1
+            print('First', istr)
+            (2) except 블록 skip
+            astr = '123'
+            try:
+                istr = int(astr)
+            except:
+                istr = -1
+            print('Second', istr)
+            (3) 안좋은 예시
+            astr = 'Bob'
+            try:
+                print('Hello')
+                istr = int(astr) #문제지점
+                print('There') #실행 안됨. 따라서 try는 윗 행에만 걸어주는 것 추천
+            except:
+                istr = -1
+            print('Done', istr)
+            (4)실제적 예시
+            rawstr = input('Enter a number:')
+            try:
+                ival = int(rawstr)
+            except:
+                ival = -1
+          
+            if ival > 0 :
+                print('Nice work')
+            else:
+                print('Not a number')
+
+제 4장 함수
+    1. 저장(그리고 재사용) 단계
+        가. 재사용 가능한 코드 조각을 "함수"라고 부름
+        나. 예시문: thing() 함수 만들기
+            def thing():
+                print('Hello')
+                print('Fun')
+            
+            thing()
+            print('Zip')
+            thing()
+    2. 파이썬 함수
+        가. 내장함수
+            (1) 파이썬의 한 부분으로 제공됨
+            (2) ex) print(), input(), type(), float(), int() ...
+        나. 사용자 정의 함수
+        다. 함수의 이름은 "새로운" 예약어로 생각. 따라서 변수로 사용 불가.
+    3. 함수의 정의
+        가. 파이썬에서 함수는 인자를 입력 받고, 계산을 하고, 결과를 반환하는 재사용 가능한 코드
+        나. 함수를 정의할 때 def 예약어를 이용
+        다. 함수 이름, 괄호 그리고 인자를 이용해 함수를 호출함
+        라. 예시문- 내장함수
+            big = max('Hello world')
+            print(big)
+            >>> w
+            tiny = min('Hello world')
+            print(tiny) # 빈칸이 가장 작기 대문에 빈칸이 출력됨
+            >>>
+    4. 자료형 변환
+        가. 정수형과 실수형을 표현식에 동시에 사용할 때 정수는 암시적으로 실수형으로 변환됨
+        나. 내장 함수인 int()과 float()을 이용하여 조정 가능
+    5. 문자열 변환
+        가. int() 와 float()를 문자열에서 정수형으로 변환할 때도 사용할 수 있음.
+        나. 문자열이 숫자를 포함하지 않으면 에러
+    6. 사용자 정의 함수
+        가. def 키워드, 괄호, 그리고 선택적으로 매개 변수를 적어서 새로운 함수를 만들 수 있음.
+        나. 함수 본문은 들여쓰기를 함
+        다. 이는 함수를 정의하지만 함수의 본문을 실행하지는 않음
+        라. 예시문
+            def print_lyrics():
+                print("I'm a lumberjack, and I'm okay.")
+                print('I sleep all night and I work all day.')
+        마. 함수를 한 번 정의하면, 원하는 만큼 호출 (또는 실행) 가능. 이는 저장과 재사용 패턴
+    7. 인자(arguments)
+        가. 인자는 함수를 호출 할 때 입력값으로 전달하는 값
+        나. 인자는 함수가 다른 조건에서 호출 되었을 때 각각 다른 일을
+        다. 수행할 수 있도록 지시하는 역할
+        라. 인자는 함수 이름 다음의 괄호 안에 씀
+    8. 매개변수(parameter)
+        가. 매개 변수는 함수 정의에 사용되는 변수임. 
+        나. 특정 함수호출에서 함수 안의 코드가 인자에 접근하기 위한 “손잡이” 역할.
+        다. 예시문
+            def greet(lang):
+            ... if lang == 'es':
+            ...     print('Hola')
+            ... elif lang == 'fr':
+            ...     print('Bonjour')
+            ... else:
+            ...     print('Hello')
+    9. 반환값
+        가. 함수는 종종 인자를 받아서 계산을 하고 함수 호출 구문이 사용할 수 있도록 값을 반환. 이를 위해 return 키워드를 사용.
+        나. 함수에서 return이 발생하면 반환값을 전달하고 함수는 종료됨.
+        다. 반환되는 값이 있는 함수를 "fruitful"함수라고 함.
+        라. return 구문은 함수 실행을 끝내고 함수의 결과를 “반환”
+        마. 예시문
+        >>> def greet(lang):
+            ... if lang == 'es':
+            ...     return 'Hola'
+            ... elif lang == 'fr':
+            ...     return 'Bonjour'
+            ... else:
+            ...     return 'Hello'
+            ...
+        >>> print(greet('en'),'Glenn')
+            Hello Glenn
+        >>> print(greet('es'),'Sally')
+            Hola Sally
+        >>> print(greet('fr'),'Michael')
+            Bonjour Michael
+    10. 다중 매개 변수 / 인자
+        가. 함수 정의에서 한 개 이상의 매개변수를 정의할 수 있음.
+        나. 단순히 함수를 호출 할 때 인자를 추가
+        다. 숫자는 인자의 순서에 따라 매개변수와 매칭
+        라. 예시문
+            def addtwo(a, b):
+                added = a + b
+                return added
+            x = addtwo(3, 5)
+            print(x)
+    11. Void (non-fruitful) 함수
+        가. 함수가 값을 반환하지 않으면, “void” 함수라고 함
+        나. 값을 반환하는 함수를 “fruitful” 함수라고 함
+        다. Void 함수는 “not fruitful” 함수
+    12. 함수를 사용하는 이유
+        가. 코드를 한 “문단”으로 정리 - 완전한 아이디어를 저장해두고 “명명”
+        나. 번복하지 말기 - 한 번에 작동하도록 만들어서 재사용
+        다. 코드가 너무 길어지거나 복잡해지면, 논리 상 나누어서 각 조각을 함수 안에 집어 넣어넣기
+        라. 일반적으로 자주 사용 하는 것은 라이브러리화 - 동료와 공유해도 좋음
+
+제 5장 루프와 반복문
+1. while 루프
+    가. 반복 단계
+        (1) 루프(반복 단계) 는 각 루프 마다 변하는 반복 변수를 가지고 있음 종종 반복 변수는 연속된 숫자를 차례대로 받음
+        (2) 예시문
+            n = 5
+            while n > 0 :
+                print(n)
+                n = n – 1
+            print('Blastoff!')
+            print(n)
+    나. 무한 루프
+        (1) 반복 변수를 잘못 설정하여 무한 반복되는 코드
+        (2) n = 5
+            while n > 0 :
+                print('Lather')
+                print('Rinse')
+            print('Dry off!')
+    다. 루프 빠져나오기
+        (1) break 구문은 현재 루프를 끝내고 루프 다음에 있는 구문으로 바로 건너뜀
+        (2) 루프 본문 어디에서든 일어날 수 있는 루프 테스트와 같음
+        (3) 예시문
+            while True:
+                line = input('> ')
+                if line == 'done' :
+                    break
+                print(line)
+            print('Done!')
+        (4) 결과
+            > hello there
+            hello there
+            > finished
+            finished
+            > done
+            Done!
+    라. continue로 반복문 끝내기
+        (1) continue구문은 현재 반복을 끝내고 루프의 시작으로 점프해서 다음 반복을 실행
+        (2) 예시문
+            while True:
+                line = input('> ')
+                if line[0] == '#' :
+                    continue
+                if line == 'done' :
+                    break
+                print(line)
+            print('Done!')
+        (3) 결과
+            > hello there
+            hello there
+            > # don't print this
+            > print this!
+            print this!
+            > done
+            Done!
+    마. 불확정 루프
+        (1) while 루프는 조건문이 거짓이 되기 전까지 계속 실행 되기 때문에 “불확정 루프”라고 불림
+        (2) 지금까지 본 루프는 종료 가능한지 아니면 “무한 루프”인지 검토하기 쉬웠음
+        (3) 그러나 가끔은 루프가 종료할 수 있는지 확인하기 어려울 수 있음
+    
+2. for 루프
+    가. 유한 루프
+        (1) 우리는 자주 어떤 항목의 리스트, 예를 들어 파일의 줄을 데이터로 받음 - 다른 말로 어떤 것의 유한 집합
+        (2) 파이썬 for 구조를 이용해서 집합의 각 항목에 대해서 반복문을 실행하는 루프를 만들 수 있음
+        (3) 정확히 특정 횟수 만큼 실행되므로 이 루프를 “유한 루프” 라고 함
+        (4) “유한 루프는 집합의 원소를 통해 반복”
+        (5) 예시문
+            (가) 수치형
+                for i in [5, 4, 3, 2, 1] :
+                    print(i)
+                print('Blastoff!')
+            (나) 문자형
+                friends = ['Joseph', 'Glenn', 'Sally']
+                for friend in friends :
+                    print('Happy New Year:', friend)
+                print('Done!')
+    (나) in 파헤치기
+        (1) 반복 변수는 시퀀스(순서가 있는 집합)를 통해 “반복”
+        (2) 코드의 루프 블럭(본문)은 시퀀스 안의 각 값에 대해 한번씩 실행
+        (3) 반복 변수는 시퀀스 안의 모든 값을 가지고 실행
+        (4) 반복 변수는 시퀀스(순서가 있는 집합)를 통해 “반복”
+        (5) 코드의 루프 블럭 (본문)은 시퀀스 안의 각 값에 대해 한번씩 실행
+        (6) 반복 변수는 시퀀스 안의 모든 값을 가지고 실행
+
+3. 반복문
+    가. 똑똑한 루프 만들기
+        (1) 원소를 하나씩 한 번에 보는 코드를 짜는 것이 어렵다면 전체의 루프의 작동방식에 대해 알아야 함.
+        (2) 루프의 구조
+            (가) 변수를 초기 값으로 설정
+            (나) 각 원소에 대해 독립적으로 탐색하거나 무언가를 하고 변수 값을 업데이트.
+            (다) 변수 값 확인
+    나. 집합을 이용한 루프
+        (1) 예시문
+            print('Before')
+            for thing in [9, 41, 12, 3, 74, 15] :
+                print(thing)
+            print('After')
+        (2) 결과
+            Before
+            9
+            41
+            12
+            3
+            74
+            15
+            After
+    다. 최대값 구하기 루프
+        (1) 예시문: 우리가 확인한 숫자 중 최대값을 저장하는 변수를 생성. 현재 보고 있는 숫자가 더 크면, 그 숫자가 새로운 확인한 숫자 중 최대값.
+            largest_so_far = -1
+            print('Before', largest_so_far)
+            for the_num in [9, 41, 12, 3, 74, 15] :
+                if the_num > largest_so_far :
+                    largest_so_far = the_num
+                print(largest_so_far, the_num)
+            print('After', largest_so_far)
+        (2) 결과
+            Before -1
+            9 9
+            41 41
+            41 12
+            41 3
+            74 74
+            74 15
+            After 74
+3. 반복문 응용
+    가. 개수 구하기 
+        (1) 예시문: 루프를 몇 번 실행했는지 횟수를 구하기 위해서 0에서 시작하는 카운팅 변수를 도입하고 루프를 실행할 때 마다 1을 더함
+            zork = 0
+            print('Before', zork)
+            for thing in [9, 41, 12, 3, 74, 15] :
+                zork = zork + 1
+                print(zork, thing)
+            print('After', zork)
+          (2) 결과
+            Before 0
+            1 9
+            2 41
+            3 12
+            4 3
+            5 74
+            6 15
+            After 6
+    나. 합계 구하기
+        (1) 예시문: 루프에서 만난 값을 모두 더하기 위해, 0에서 시작하는 합계 변수를 도입하고 루프를 실행할 때 마다 값을 더함
+            zork = 0
+            print('Before', zork)
+            for thing in [9, 41, 12, 3, 74, 15] :
+                zork = zork + thing
+                print(zork, thing)
+            print('After', zork)
+        (2) 결과
+            Before 0
+            1 9
+            2 41
+            3 12
+            4 3
+            5 74
+            6 15
+            After 6
+    다. 평균 구하기
+        (1) 예시문: 평균은 개수 구하기 패턴과 합계 패턴을 결합해서 구할 수 있음. 루프가 끝나면 합계를 개수로 나눔.
+            count = 0
+            sum = 0
+            print('Before', count, sum)
+            for value in [9, 41, 12, 3, 74, 15] :
+                count = count + 1
+                sum = sum + value
+                print(count, sum, value)
+            print('After, count, sum, sum/count)
+         (2) 결과
+            Before 0 0
+            1 9 9
+            2 50 41
+            3 62 12
+            4 65 3
+            5 139 74
+            6 154 15
+            After 6 154 25.666
+    라. 필터링 하기
+        (1) 예시문: if 구문을 루프에서 사용해서 찾고자 하는 값을 발견하거나 필터링
+            print('Before')
+            for value in [9, 41, 12, 3, 74, 15] :
+                if value > 20:
+                    print('Large number',value)
+            print('After')
+        (2) 결과
+            Before
+            Large number 41
+            Large number 74
+            After
+    마. 불리언 변수 이용해서 탐색하기
+        (1) 예시문: 단순히 탐색해서 어떤 값이 존재하는지 알고 싶다면, False값으로 시작하는 변수를 도입해서 찾고자 하는 값을 찾는 순간 값을 True로 바꿉니다
+            found = False
+            print('Before', found)
+            for value in [9, 41, 12, 3, 74, 15] :
+                if value == 3:  
+                    found = True
+                print(found, value)
+            print('After', found)
+        (2) 결과
+            Before False
+            False 9
+            False 41
+            False 12
+            True 3
+            True 74
+            True 15
+            After True
+    바. 최솟값 찾기
+        (1) 예시문: 최대값 구하기 구문의 변수명을 smallest_so_far로 바꾸고 연산자 >를 연산자 <로 변경
+            smallest_so_far = -1
+            print('Before', smallest_so_far)
+            for the_num in [9, 41, 12, 3, 74, 15] :
+                if the_num < smallest_so_far :
+                    smallest_so_far = the_num
+                print(smallest_so_far, the_num)
+            print('After', smallest_so_far)
+        (2) 결과: 원하는 최소값 못 찾음.
+            Before -1
+            -1 9
+            -1 41
+            -1 12
+            -1 3
+            -1 74
+            -1 15
+            After -1
+        (3) 예시문 수정
+        : 여전히 예비 최소값을 저장하는 변수가 존재. 루프의 첫 번째 실행에서 smallest의 값은 None이므로, 리스트 첫 번째 값을 smallest 에 저장.
+            smallest = None
+            print('Before', smallest_so_far)
+            for value in [9, 41, 12, 3, 74, 15] :
+                if smallest is None :  
+                    smallest = value
+                elif value < smallest :
+                    smallest = value
+                print(smallest, value)
+            print('After', smallest)
+    사. is와 is not 연산자
+        (1) 파이썬은 논리 표현식에 사용할 수 있는 is 연산자를 가지고 있음
+        (2) “양변은 같은 값이다”를 의미
+        (3) 비슷하지만 == 보다 강력
+            (가) 예
+                0 == 0.0 -> True
+                0 is 0.0 -> False (자료형이 다름)
+            (나) 제한이 굉장히 강하기 때문에 잘못 사용하면 오류발생을 유발할 수 있으니 신중히 사용
+            (다) None이나 불리언 연산자에 사용할 것을 권장
+        (4) is not 역시 논리 연산자임
+
+제 6장 문자열
+1. 문자열과 자료형
+    가. 문자열은 문자 시퀀스
+    나. 문자열은 따옴표를 사용해서 표기 'Hello' 또는 "Hello"
+    다. 문자열에서, + 연산자는 “병합”을 의미
+    라. 문자열이 숫자를 포함하고 있어도 여전히 문자열
+    마. int() 함수를 이용해서 문자열 안의 숫자를 정수형으로 변환 가능
+2. 읽기와 변환하기
+    가. 문자열을 통해 데이터를 읽고 파싱하고 필요한 데이터를 변환 하는 것을 선호
+    나. 이 예시는 에러와 잘못된 사용자 입력에 대한 상황 파악에 좋은 길잡이
+    다. 숫자 입력은 문자열에서 변환 되어야 함
+    라. 예시문
+        >>> apple = input('Enter:')
+        Enter:100
+        >>> x = apple – 10
+        Traceback (most recent call
+        last): File "<stdin>", line 1,
+        in <module>
+        TypeError: unsupported operand
+        type(s) for -: 'str' and 'int'
+        >>> x = int(apple) – 10
+        >>> print(x)
+        90
+3. 문자열 파악하기
+    가. 문자열에 있는 어떤 문자든지 대괄호 안에 지정된 인덱스를 이용해서 가져올 수 있음
+    나. 인덱스 값은 정수이고 0에서 시작
+    다. 인덱스로 계산 가능한 표현식을 사용 가능
+    라. 예시문
+        >>> fruit = 'banana'
+        >>> letter = fruit[1]
+        >>> print(letter)
+        a
+        >>> x = 3
+        >>> w = fruit[x - 1]
+        >>> print(w)
+        n
+4. 범위 밖 문자
+    가. 문자열 크기를 넘어선 인덱스에 접근하려고 하면 파이썬 에러가 발생
+    나. 인덱스 값을 계산 하거나 문자열을 자를 때 주의
+    다. 예시문
+        >>> zot = 'abc'
+        >>> print(zot[5])
+        Traceback (most recent call last): File "<stdin>", line 1, in <module>
+        IndexError: string index out of range
+        >>>
+5. 문자열의 길이
+    가. 내장 함수 len는 문자열의 길이를 반환
+    나. 예시문
+        >>> fruit = 'banana'
+        >>> print(len(fruit))
+        6   
+6. 문자열을 통한 루프
+    가. while 구문 활용
+        (1) while, 반복 변수, len 함수를 이용해서 문자열 안에 있는 각 문자를 독립적으로 확인하는 루프를 만들 수 있음
+        (2) 예시문     
+            fruit = 'banana'
+            index = 0
+            while index < len(fruit):
+                letter = fruit[index]
+                print(index, letter)
+                index = index + 1
+        (3) 결과
+            0 b
+            1 a
+            2 n
+            3 a
+            4 n
+            5 a
+
+    다. for 구문
+        (1) for 구문을 이용하는 유한 루프가 더 깔끔함
+        (2) 반복 변수는 for 루프에 의해 완벽하게 관리됨
+        (3) 예시문
+            fruit = 'banana'
+            for letter in fruit:
+                print(letter)
+        (4) 결과
+            b
+            a
+            n
+            a
+            n
+            a
+7. 루프와 개수 세기
+    가. 문자열에 있는 각 문자에 대해 루프를 실행해서 문자 ‘a’의 개수를 세는 간단한 루프    
+    나. 예시문
+        word = 'banana'
+        count = 0 
+        for letter in word :
+            if letter == 'a':
+                count = count + 1
+        print(count)
+8. in 파헤치기
+    가. 반복 변수는 시퀀스(순서가 있는 집합)를 통해 “반복”
+    나. 코드의 루프 블럭 (본문)은 시퀀스 안의 각 값에 대해 한번씩 실행
+    다. 반복 변수는 시퀀스 안의 모든 값을 가지고 실행
+9. 문자열 슬라이싱
+    가. 콜론 연산자를 사용해서 문자열의 연속적인 구간을 가져올 수 있음
+    나. 두 번째 숫자는 문자열 조각 보다 한 글자 너머를 가리킴 -“~까지 이지만 포함하지 않음”
+        s = 'Monty Python'
+        >>> print(s[6:7])
+        P
+    다. 두 번째 숫자가 문자열 마지막 너머를 가리키는 경우 문자열의 마지막에서 멈춤.
+        >>> print(s[6:20])
+        Python  
+    라. 첫 번째 숫자나 두 번째 숫자를 생략하면 각각 문자의 시작과 마자막을 가리킨다고 가정
+        >>> s = 'Monty Python'
+        >>> print(s[:2])
+        Mo
+        >>> print(s[8:])
+        thon
+        >>> print(s[:])
+        Monty Python
+10. 문자열 병합
+    가. + 연산자가 문자열에 적용되면, “병합”을 의미
+    나. 예시문
+        >>> a = 'Hello'
+        >>> b = a + 'There'
+        >>> print(b)
+        HelloThere
+        >>> c = a + ' ' + 'There'
+        >>> print(c)
+        Hello There
+11. 논리 연산자로서의 in
+    가. in 키워드는 어떤 문자열이 다른 문자열에 “포함”되는지 확인하기 위해서도 사용
+        >>> fruit = 'banana'
+        >>> 'n' in fruit
+        True
+        >>> 'm' in fruit
+        False
+        >>> 'nan' in fruit
+        True
+    나. in 표현식은 참 또는 거짓값을 반환하는 논리 표현식이며 if 구문에 사용될 수 있음
+        >>> if 'a' in fruit :
+        ... print('Found it!')
+        ...
+        Found it!
+        >>>
+12. 문자열 비교
+    가. 보통의 경우 대문자가 소문자 보다 작다.
+    나. 예시문
+    if word == 'banana':
+        print('All right, bananas.')
+    if word < 'banana':
+        print('Your word,' + word + ', comes before banana.')
+    elif word > 'banana':
+        print('Your word,' + word + ', comes after banana.')
+    else:
+        print('All right, bananas.')
+13. 문자열 라이브러리
+    가. 파이썬은 여러 개의 문자열 라이브러리 함수를 정의하는 문자열 라이브러리가 존재
+    나. 이 함수는 모든 문자열에 이미 내장 되어 있음 - 함수를 문자열 변수에 붙임으로써 호출
+        >>> greet = 'Hello Bob'
+        >>> zap = greet.lower()
+        >>> print(zap)
+        hello bob
+    다. 이 함수는 원본 문자열을 수정하지 않고, 대신 바뀐 새로운 문자열을 반환
+        >>> print(greet)
+        Hello Bob
+        >>> print('Hi There'.lower())
+        hi there
+        >>>
+    라. 문자열 라이브러리 함수들은 객체 지향형으로 method라고 불린다. 
+        (1) '.'으로 객체에 붙음. 
+        (2) 반면, len과 같은 함수는 객체지향형이 아님.
+        (3) 문자열의 객체지향 매소드 종류
+            >>> stuff = 'Hello world'
+            >>> type(stuff)
+            <class 'str'>
+            >>> dir(stuff)
+            ['capitalize', 'casefold', 'center', 'count', 'encode',
+            'endswith', 'expandtabs', 'find', 'format', 'format_map',
+            'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit',
+            'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace',
+            'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip',
+            'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust',
+            'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines',
+            'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper',
+            'zfill']
+    마. 문자열 탐색
+        (1) find() 함수를 이용해서 하위 문자열을 다른 문자열에서 탐색 가능
+        (2) find() 하위 문자열의 첫 번째로 나타나는 위치를 검색 
+            >>> fruit = 'banana'
+            >>> pos = fruit.find('na')
+            >>> print(pos)
+            2 # 처음나온 na가 시작되는 위치
+        (3) 하위 문자열을 찾지 못하면, find() 는 -1을 반환
+            >>> aa = fruit.find('z')
+            >>> print(aa)
+            -1
+        (4) 문자열 좌표는 0에서 시작한다는 것에 주의
+    바. 대문자, 소문자 만들기
+        (1) 문자열의 복사본을 모두 소문자 또는 대문자로 치환 가능
+        (2) find()를 이용해서 문자열을 탐색할 때, 문자열을 먼저 소문자로 바꾼 뒤 탐색하면 대소문자와 관계 없이 문자열을 탐색 가능
+        (3) 예시문
+            >>> greet = 'Hello Bob'
+            >>> nnn = greet.upper()
+            >>> print(nnn)
+            HELLO BOB
+            >>> www = greet.lower()
+            >>> print(www)
+            hello bob
+            >>>
+    사. 찾아서 바꾸기
+        (1) replace() 함수는 워드프로세서에서 “찾아서 바꾸기" 와 같은 역할
+        (2) 나타나는 모든 탐색 문자열을 대체 문자열로 치환
+        (3) 예시문
+            >>> greet = 'Hello Bob'
+            >>> nstr = greet.replace('Bob','Jane')
+            >>> print(nstr)
+            Hello Jane
+            >>> nstr = greet.replace('o','X')
+            >>> print(nstr)
+            HellX BXb
+            >>>
+    아. 공백 제거
+        (1) 종종 문자열의 끝과 마지막에 남아있는 공백을 제거
+        (2) lstrip() 과 rstrip()은 각각 문자열 왼쪽과 오른쪽에 있는 공백을 제거
+        (3) strip() 문자열 시작과 끝에 있는 모든 공백을 제거
+        (4) 예시문
+            >>> greet = ' Hello Bob '
+            >>> greet.lstrip()
+            'Hello Bob '
+            >>> greet.rstrip()
+            ' Hello Bob'
+            >>> greet.strip()
+            'Hello Bob'
+    자. 접두사(prefixes)
+        (1) True 또는 False 값을 반환
+        (2) 예시문
+            >>> line = 'Please have a nice day'
+            >>> line.startswith('Please')
+            True
+            >>> line.startswith('p')
+            False
+14. 파싱과 추출
+    >>> data = 'From stephen.marquard@uct.ac.za Sat Jan 5 09:14:16 2008'
+    >>> atpos = data.find('@')
+    >>> print(atpos)
+    21
+    >>> sppos = data.find(' ',atpos)
+    >>> print(sppos)
+    31
+    >>> host = data[atpos+1 : sppos]
+    >>> print(host)
+    uct.ac.za
+15. 두 종류의 문자열
+    가. 파이썬 3에서는, 모든 문자열이 유니코드입니다
+    나. Python 2.7.10
+        >>> x = '이광춘'
+        >>> type(x)
+        <type 'str'>
+        >>> x = u'이광춘'
+        >>> type(x)
+        <type 'unicode'>
+        >>>
+    다. Python 3.5.1
+        >>> x = '이광춘'
+        >>> type(x)
+        <class 'str'>
+        >>> x = u'이광춘'
+        >>> type(x)
+        <class 'str'>
+
+제 7장 파일
+1. 파일 열기
+    가. 파일의 내용을 읽기 전에 파이썬에게 작업할 파일과 파일로 어떤 작업을 할지 알려줘야 함
+    나. open() 함수가 해당 기능을 수행함
+    다. open()이 “파일 핸들”을 반환 - 파일에 대한 작업을 수행하기 위해 사용하는 변수
+    라. 워드 프로세서에서 “File -> Open” 과 비슷함
+2. open() 사용
+    가. 핸들 = open(파일명, 모드)
+    나. 파일을 조작하는데 쓰는 핸들을 반환함
+    다. 파일명에는 문자열이 들어감
+    라. 모드에 매개 변수를 넣는 것은 선택 사항이며 파일을 읽으려면 ‘r’을, 파일에 쓰려면 ‘w’를 입력
+    마. 핸들이란?
+        >>> fhand = open('mbox.txt')
+        >>> print(fhand)
+        <_io.TextIOWrapper name='mbox.txt' mode='r' encoding='UTF-8'>
+3. 개행 문자
+    가. 각 줄이 끝날 때 이를 알리기 위해 “개행 문자”라고 부르는 특수한 문자를 사용
+    나. 문자열에서는 \n으로 표현함
+        >>> stuff = 'Hello\nWorld!'
+        >>> stuff
+        'Hello\nWorld!'
+        >>> print(stuff)
+        Hello
+        World!
+        >>> stuff = 'X\nY'
+        >>> print(stuff)
+        X
+        Y
+    다. 개행 문자는 한 글자- 두 글자가 아님
+        >>> len(stuff)
+        3
+4. 파일 처리
+    가. 텍스트 파일은 일련의 줄이 나열된 것으로 여길 수 있음
+    나. 텍스트 파일은 각 줄 끝에 개행 문자가 있음
+5. 파이썬에서 파일 읽기
+    가. 시퀀스로써 파일 핸들
+        (1) 읽기용으로 열린 파일 핸들은 파일의 각 줄에 대한 문자열의 시퀀스로 볼 수 있음
+        (2) for 문을 사용하여 시퀀스를 반복하여 돌 수 있음
+        (3) 시퀀스는 정렬된 집합임을 기억하기
+        (4) 예시문
+            xfile = open('mbox.txt')
+            for cheese in xfile:
+            print(cheese)
+    나. 파일의 줄 세기
+        (1) 파일을 읽기 모드로 열기
+        (2) for 문을 이용하여 각 줄을 읽기
+        (3) 줄을 세고 줄의 수를 출력하기
+        (4) 예시문
+            fhand = open('mbox.txt')
+            count = 0
+            for line in fhand:
+            count = count + 1
+            print('Line Count:', count)
+    다. 파일 전체를 읽기
+        (1) 파일 전체(개행 문자 포함 전체)를 하나의 문자열로 읽을 수 있음
+        (2) 예시문
+            >>> fhand = open('mbox-short.txt')
+            >>> inp = fhand.read()
+            >>> print(len(inp))
+            94626
+            >>> print(inp[:20])
+            From stephen.marquar
+6. 파일 내용 탐색
+    가. for 문에 if 문을 넣어서 특정 조건을 만족하는 줄만 출력
+    나. 예시문
+        fhand = open('mbox-short.txt')
+        for line in fhand:
+            if line.startswith('From:') :
+                print(line)
+        (1) 결과  
+            From: stephen.marquard@uct.ac.za
+            
+            From: louis@media.berkeley.edu
+            
+            From: zqian@umich.edu
+            
+            From: rjlowe@iupui.edu
+            ...
+        (2) 줄과 줄 사이의 빈 줄은?
+            (가) 파일의 각 줄은 끝에 개행 문자를 갖고 있음
+            (나) print 구문이 각 줄에 개행 문자를 추가로 더함
+            (다) 해결방법
+                1) 문자열 라이브러리에 있는 rstrip()을 이용하여 오른쪽에서부터 공백을 지울 수 있음
+                2) 개행 문자는 “공백”으로 취급되어 제거됨.
+                3) 코드
+                    fhand = open('mbox-short.txt')
+                    for line in fhand:
+                        line = line.rstrip()
+                        if line.startswith('From:') :
+                            print(line)
+        (3) continue로 넘어가기
+            (가) continue 문을 사용하여 편리하게 줄을 넘길 수 있음
+            (나) 예시문
+                fhand = open('mbox-short.txt')
+                for line in fhand:
+                    line = line.rstrip()
+                    if not line.startswith('From:') :
+                        continue
+                    print(line)
+        (4) 줄을 선택하기 위해 in 사용하기
+            (가) 설정한 선택 기준에 맞춰 줄 안 어디에서든 문자열을 찾을 수 있음
+            (나) 예시문
+                fhand = open('mbox-short.txt')
+                for line in fhand:
+                    line = line.rstrip()
+                    if not '@uct.ac.za' in line :
+                        continue
+                    print(line)
+7. 파일명을 바꿔가며 탐색
+    가. 예시문
+        fname = input('Enter the file name: ')
+        fhand = open(fname)
+        count = 0
+        for line in fhand:
+            if line.startswith('Subject:') :
+                count = count + 1
+        print('There were', count, 'subject lines in', fname)    
+    나. 부적절한 파일명
+        fname = input('Enter the file name: ')
+        try: 
+            fhand = open(fname)
+        except:
+            print('File cannot be opened: ', fname)
+            quit()
+        count=0
+        for line in fhand:
+            if line.startwith('Subject: ')
+                count = count +1
+        print('There were', count, 'subject lines in', fname) 
+
 제 8장 파이썬 리스트
 1. 프로그래밍
   가. 알고리즘: 문제를 해결하는 데 사용하는 일련의 규칙 또는 단계
