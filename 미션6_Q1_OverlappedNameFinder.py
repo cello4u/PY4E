@@ -1,12 +1,12 @@
 # Define function1
 def Inputchecker(names):
     names = names.strip()
-    # check whether numbers of king's names is too small
+    # Check whether number of king's names is too small
     if len(names.split(",")) <= 3:
         print("Input error! Enter at least three kings name!")
         re = input("Enter king's names again(divide names by ','): ")
         Inputchecker(re)
-    # check whether names are divided with comma
+    # Check whether names are divided by ","
     if "," not in names:
         print("Input error! Divide names with ','")
         re = input("Enter king's names again(divide names by ','): ")
