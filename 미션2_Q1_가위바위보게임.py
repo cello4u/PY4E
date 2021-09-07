@@ -8,7 +8,7 @@ def rsp(my):
         elif my == "2" or my == "보":
                 my = "보"
         
-        #컴퓨터가 낼 것 선정
+        #컴퓨터가 낼 것 선정.
         import random
         com=random.randint(0,2)
 
